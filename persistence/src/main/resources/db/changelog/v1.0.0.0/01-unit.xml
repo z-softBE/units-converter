@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    
+    <changeSet id="01-01-unit-table" author="Wout">
+        <createTable tableName="units">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_unit" />
+            </column>
+
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="short_hand" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="ratio_to_parent" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ratio_type" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="parent_id" type="VARCHAR(255)">
+                <constraints nullable="true" />
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="01-02-units-data" author="Wout">
+        <loadData tableName="units" file="db/data/units.csv">
+            <column name="id" type="string" />
+            <column name="name" type="string" />
+            <column name="short_hand" type="string" />
+            <column name="type" type="string" />
+            <column name="ratio_to_parent" type="string" />
+            <column name="ratio_type" type="string" />
+            <column name="parent_id" type="string" />
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>
